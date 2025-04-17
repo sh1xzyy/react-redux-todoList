@@ -30,8 +30,22 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 tasks: {
                     items: state.tasks.items.filter(task => task.id !== action.payload)
-                }
+                },
             }
+            case "tasks/toggleCompleted":
+                return {
+                    ...state,
+                    tasks: {
+                        items: state.tasks.items.map(task => task.id === action.payload ? {...task, completed: !task.completed} : task)
+                    }
+                }
+            case "filter/setStatusFilter":
+                return {
+                    ...state,
+                    filter: {
+                        status: action.payload
+                    }
+                }
     }
     return state
 }

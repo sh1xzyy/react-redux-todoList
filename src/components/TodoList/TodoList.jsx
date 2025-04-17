@@ -4,7 +4,7 @@ import s from "./TodoList.module.css"
 
 const getVisibleItems = (tasks, filter) => {
   switch(filter){
-    case "active":
+    case "onDeveloping":
       return tasks.filter(task => !task.completed)
     case "completed":
       return tasks.filter(task => task.completed)

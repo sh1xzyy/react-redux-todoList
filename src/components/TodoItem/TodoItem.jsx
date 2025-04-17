@@ -1,16 +1,16 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import { deleteTask, toggleCompleted } from "../../redux/action"
 
 const TodoItem = ({task}) => {
   const dispatch = useDispatch()
 
-  const handleDelete = () => dispatch(handleDelete(task.id))
-
-  const toggleCompleted = () => dispatch(toggleCompleted(task.id))
+  const handleDelete = () => dispatch(deleteTask(task.id))
+  const onToggleBtnClick = () => dispatch(toggleCompleted(task.id))
   return (
     <>
-      <input type="checkbox" checked={task.completed} onChange={() => {toggleCompleted}}/>
+      <input type="checkbox" checked={task.completed} onChange={onToggleBtnClick}/>
       <p>{task.text}</p>
-      <button type="button" onChange={() => {handleDelete}}>Delete</button>
+      <button type="button" onClick={handleDelete}>Delete</button>
     </>
   )
 }
